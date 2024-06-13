@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{3C60E630-5F30-4B12-8D45-4B8716FC6603}|Game\\Game.vcxproj|solutionrelative:Game\\source\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{93F14215-DC0E-49B5-AE3E-4DF22766351F}|Engine\\Engine.vcxproj|C:\\Users\\Queen Anne\u0027s Titts\\Desktop\\Dx12 GE\\3D-Game-Engine---Directx12\\Dev\\DirectX12Game\\Engine\\source\\EngineMin.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{93F14215-DC0E-49B5-AE3E-4DF22766351F}|Engine\\Engine.vcxproj|solutionrelative:Engine\\source\\EngineMin.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{93F14215-DC0E-49B5-AE3E-4DF22766351F}|Engine\\Engine.vcxproj|C:\\Users\\Queen Anne\u0027s Titts\\Desktop\\Dx12 GE\\3D-Game-Engine---Directx12\\Dev\\DirectX12Game\\Engine\\source\\temp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{93F14215-DC0E-49B5-AE3E-4DF22766351F}|Engine\\Engine.vcxproj|solutionrelative:Engine\\source\\temp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
@@ -18,11 +22,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "EngineMin.h",
+              "DocumentMoniker": "C:\\Users\\Queen Anne\u0027s Titts\\Desktop\\Dx12 GE\\3D-Game-Engine---Directx12\\Dev\\DirectX12Game\\Engine\\source\\EngineMin.h",
+              "RelativeDocumentMoniker": "Engine\\source\\EngineMin.h",
+              "ToolTip": "C:\\Users\\Queen Anne\u0027s Titts\\Desktop\\Dx12 GE\\3D-Game-Engine---Directx12\\Dev\\DirectX12Game\\Engine\\source\\EngineMin.h",
+              "RelativeToolTip": "Engine\\source\\EngineMin.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-13T03:40:20.227Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "temp.cpp",
               "DocumentMoniker": "C:\\Users\\Queen Anne\u0027s Titts\\Desktop\\Dx12 GE\\3D-Game-Engine---Directx12\\Dev\\DirectX12Game\\Engine\\source\\temp.cpp",
               "RelativeDocumentMoniker": "Engine\\source\\temp.cpp",
@@ -40,7 +57,7 @@
               "RelativeDocumentMoniker": "Game\\source\\main.cpp",
               "ToolTip": "C:\\Users\\Queen Anne\u0027s Titts\\Desktop\\Dx12 GE\\3D-Game-Engine---Directx12\\Dev\\DirectX12Game\\Game\\source\\main.cpp",
               "RelativeToolTip": "Game\\source\\main.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-06-13T02:59:15.263Z",
               "EditorCaption": ""
