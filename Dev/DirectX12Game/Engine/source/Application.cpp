@@ -43,6 +43,17 @@ namespace ALTAIE
 		return 1;
 	}
 
+	void Application::RunWindowMessageHandler()
+	{
+		MSG msg;
+		while (PeekMessage(&msg, NULL, 0,0, PM_REMOVE) > 0)
+		{
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+
+	}
+
 	bool Application::Running()
 	{
 		return 1;

@@ -10,6 +10,7 @@ int main()
 		while (app.Running())
 		{
 			//while running do something 
+			app.RunWindowMessageHandler();
 		}
 	}
 	

@@ -11,6 +11,7 @@ namespace ALTAIE
 		Application();
 		~Application();
 		bool Initilized();
+		void RunWindowMessageHandler();
 		bool Running();
 
 	private:
