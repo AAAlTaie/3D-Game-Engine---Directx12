@@ -1,6 +1,6 @@
 #pragma once
 #include "EngineMin.h"
-
+#include <Windows.h>
 
 namespace ALTAIE 
 {
@@ -10,9 +10,11 @@ namespace ALTAIE
 	public:
 		Application();
 		~Application();
-		void Run();
+		bool Initilized();
+		bool Running();
 
-
+	private:
+		HWND mWHandle = nullptr;
 
 
 	};
