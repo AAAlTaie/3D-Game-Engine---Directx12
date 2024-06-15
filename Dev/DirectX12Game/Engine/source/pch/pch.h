@@ -3,7 +3,9 @@
 #define PCH_H
 
 #include <stdio.h>
-#include "EngineMin.h"
+#include <iostream>
+#include <EngineMin.h>
+
 
 
 #endif // !PCH_H

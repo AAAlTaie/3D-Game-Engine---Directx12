@@ -5,7 +5,7 @@
 int main() 
 {
 	ALTAIE::Application app;
-	if (app.Initilized()) 
+	if (app.Initialized())
 	{
 		while (app.Running())
 		{
