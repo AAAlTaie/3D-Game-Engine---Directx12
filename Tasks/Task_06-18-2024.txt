@@ -1,0 +1,10 @@
+Added Debug Layer
+- DXGI
+- DirectX12
+
+Created Macros / Debug Helpers
+
+- Completed Factory
+- Not Completed (Adapter)
+- Not Completed (Device)
+- Not Completed (Swapchain)
