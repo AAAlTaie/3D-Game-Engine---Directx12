@@ -1,7 +1,8 @@
 #pragma once
 
-#include "EngineMin.h" // Ensure this file exists and is correctly set up
+#include "EngineMin.h" 
 #include <Windows.h>
+#include "Renderer/Renderer.h"
 
 namespace ALTAIE
 {
@@ -11,17 +12,19 @@ namespace ALTAIE
 		Application();
 		~Application();
 
-		bool Initialized(); // Corrected spelling
+		bool Initialized(); 
 		void RunWindowMessageHandler();
 		bool Running();
 
 		LRESULT MessageProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 	private:
+		Renderer m_Renderer;
+
 		HWND mWHandle = nullptr;
 		int mTestInt = 666;
 
-		// Additional utility functions
+		// Additional utility functions for my window
 		void OnCreate(HWND hWnd);
 		void OnPaint(HWND hWnd);
 		void OnResize(HWND hWnd, int width, int height);
@@ -31,5 +34,8 @@ namespace ALTAIE
 		void OnLButtonDown(int x, int y);
 		void OnLButtonUp(int x, int y);
 		void OnTimer(WPARAM timerID);
+
+		
+
 	};
 }

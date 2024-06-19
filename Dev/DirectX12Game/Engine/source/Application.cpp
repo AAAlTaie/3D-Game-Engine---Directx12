@@ -95,7 +95,8 @@ namespace ALTAIE
 	{
 		switch (msg) {
 		case WM_CREATE:
-			OnCreate(hWnd);
+			//this->OnCreate(hWnd); explicit
+			OnCreate(hWnd); //implicit
 			break;
 		case WM_PAINT:
 			OnPaint(hWnd);
@@ -105,6 +106,7 @@ namespace ALTAIE
 			break;
 		case WM_DESTROY:
 			OnDestroy(hWnd);
+			PostQuitMessage(0);
 			break;
 		case WM_KEYDOWN:
 			OnKeyDown(wParam);
@@ -131,6 +133,14 @@ namespace ALTAIE
 	void Application::OnCreate(HWND hWnd)
 	{
 		std::cout << "Window created, stored member variable: " << mTestInt << std::endl;
+		m_Renderer.InitializRenderer();
+	
+
+
+
+
+
+		
 	}
 
 	void Application::OnPaint(HWND hWnd)
