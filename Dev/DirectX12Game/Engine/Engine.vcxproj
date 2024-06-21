@@ -12,6 +12,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Renderer\DirectX12\DXGI\DXGIAdapter.cpp" />
     <ClCompile Include="source\Renderer\DirectX12\Debug\DXGIDebug.cpp" />
     <ClCompile Include="source\Renderer\DirectX12\Debug\DXDebug.cpp" />
     <ClCompile Include="source\Renderer\DirectX12\DXGI\DXGIFactory.cpp" />
@@ -23,6 +24,7 @@
     <ClCompile Include="source\Application.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Renderer\DirectX12\DXGI\DXGIAdapter.h" />
     <ClInclude Include="source\Renderer\DirectX12\Debug\DXGIDebug.h" />
     <ClInclude Include="source\Renderer\DirectX12\Debug\DXDebug.h" />
     <ClInclude Include="source\Renderer\DirectX12\Debug\DirectXDebug.h" />
