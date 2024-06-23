@@ -12,6 +12,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Renderer\DirectX12\DeviceOutput\DX12Device.cpp" />
     <ClCompile Include="source\Renderer\DirectX12\DXGI\DXGIAdapter.cpp" />
     <ClCompile Include="source\Renderer\DirectX12\Debug\DXGIDebug.cpp" />
     <ClCompile Include="source\Renderer\DirectX12\Debug\DXDebug.cpp" />
@@ -24,6 +25,7 @@
     <ClCompile Include="source\Application.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Renderer\DirectX12\DeviceOutput\DX12Device.h" />
     <ClInclude Include="source\Renderer\DirectX12\DXGI\DXGIAdapter.h" />
     <ClInclude Include="source\Renderer\DirectX12\Debug\DXGIDebug.h" />
     <ClInclude Include="source\Renderer\DirectX12\Debug\DXDebug.h" />
@@ -86,11 +88,15 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <AdditionalIncludeDirectories>$(ProjectDir)source\pch;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>

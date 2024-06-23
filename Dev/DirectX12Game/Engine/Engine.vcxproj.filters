@@ -36,6 +36,9 @@
     <ClCompile Include="source\Renderer\DirectX12\DXGI\DXGIAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\Renderer\DirectX12\DeviceOutput\DX12Device.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\EngineMin.h">
@@ -63,6 +66,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Renderer\DirectX12\DXGI\DXGIAdapter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Renderer\DirectX12\DeviceOutput\DX12Device.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
