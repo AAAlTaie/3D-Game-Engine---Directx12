@@ -32,17 +32,6 @@ namespace ENGINE
 			WTF(DXGIGetDebugInterface1(0, IID_PPV_ARGS(GetAddressOf())));
 
 		}
-		
-			
-		/*else if (!*this)
-		{
-			HRESULT hr = D3D12GetDebugInterface(IID_PPV_ARGS(this->GetAddressOf()));
-			if (FAILED(hr))
-			{
-				
-				throw std::runtime_error("D3D12GetDebugInterface failed.");
-			}
-		}*/
 
 
 	}
