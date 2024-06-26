@@ -1,0 +1,14 @@
+Setup Engine Debug Layer
+ - X12Debug
+ - DXGIDebug
+
+Setup Debug Report Macros 
+ 
+ - EngineDebug
+
+Next Tasks :
+
+- Factory
+- Adapter
+- Device
+- SwapChains
