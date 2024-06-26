@@ -1,7 +1,11 @@
 #include "pch/pch.h"
 #include "Renderer.h"
-#include "DX12API/DXGI/DXGIFactory.h"
 #include "DX12API/DebugAPI/DXGIDebug.h"
+#include "DX12API/DebugAPI/X12Debug.h"
+#include "DX12API/DXGI/DXGIFactory.h"
+#include "DX12API/DXGI/DXGIAdapter.h"
+#include "DX12API/Output/X12Device.h"
+
 
 
 
@@ -16,20 +20,20 @@ namespace ENGINE
 
 	bool Renderer::InitializRenderer()
 	{
-
-		//DXDebug::GetInstance().Enable();
+		//EngineDebug
+		X12Debug::GetX12DebugInstance().Enable();
 
 		//factory
 		DXGIFactory factory;
 
 		//Adapter
-		//DXGIAdapter adapter = factory.GetAdapter();
+		DXGIAdapter adapter = factory.GetAdapter();
 
 		//Device
-		//DX12Device device(adapter.Get());
+		X12Device device(adapter.Get());
 
 		DXGIDebug::GetInstance().GetLiveObjects();
-
+		
 		//Swapchains
 
 		return false;

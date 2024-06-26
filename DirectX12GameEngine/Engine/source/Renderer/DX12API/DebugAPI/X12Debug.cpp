@@ -32,7 +32,7 @@ namespace ENGINE
 		Microsoft::WRL::ComPtr<ID3D12Device> device;
 		HRESULT hr = D3D12CreateDevice(
 			nullptr,                     // Use the default adapter
-			D3D_FEATURE_LEVEL_12_2,      // Request D3D_FEATURE_LEVEL_12_2
+			D3D_FEATURE_LEVEL_11_0,      // Request D3D_FEATURE_LEVEL_12_2 or 11_0 .... 
 			IID_PPV_ARGS(&device)
 		);
 

@@ -12,6 +12,35 @@ namespace ENGINE
         WTF(CreateDXGIFactory2(DXGI_CREATE_FACTORY_DEBUG, IID_PPV_ARGS(&ptr_)));
     }
 
+    DXGIAdapter DXGIFactory::GetAdapter()
+    {
+        ComPtr<IDXGIFactory6> tempFactory_6;
+        ComPtr<IDXGIAdapter> gpuAdapter;
+        if (Get()->QueryInterface(IID_PPV_ARGS(&tempFactory_6)) == S_OK)
+        {
+            //PRINT_N(" Getting Adapter was Succesful");
+            HRESULT res = tempFactory_6->EnumAdapterByGpuPreference(0, DXGI_GPU_PREFERENCE_HIGH_PERFORMANCE, IID_PPV_ARGS(&gpuAdapter));
+
+            switch (res)
+            {
+            case S_OK:
+                return DXGIAdapter(gpuAdapter.Get());
+                break;
+            case DXGI_ERROR_NOT_FOUND:
+                THROWUP_AN_ERROR("DXGI Adapter not found!");
+                break;
+
+            default:
+                THROWUP_AN_ERROR("Unknown DXGI Adapter error!");
+                break;
+            }
+        }
+
+        //Create a Handle if it breaks passes back the addapter 
+        WTF(Get()->EnumAdapters(0, &gpuAdapter));
+        return DXGIAdapter(gpuAdapter.Get());
+    }
+
     //DXGIAdapter DXGIFactory::GetAdapter()
     //{
     //    ComPtr<IDXGIFactory6> tempFactory_6;

@@ -39,6 +39,12 @@
     <ClInclude Include="source\Renderer\DX12API\DebugAPI\DXGIDebug.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\Renderer\DX12API\DXGI\DXGIAdapter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Renderer\DX12API\Output\X12Device.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\pch\pch.cpp">
@@ -57,6 +63,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Renderer\DX12API\DebugAPI\DXGIDebug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Renderer\DX12API\DXGI\DXGIAdapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Renderer\DX12API\Output\X12Device.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

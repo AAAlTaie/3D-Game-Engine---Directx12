@@ -72,6 +72,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Engine\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -82,6 +83,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="source\Renderer\DX12API\DebugAPI\DXGIDebug.h" />
+    <ClInclude Include="source\Renderer\DX12API\DXGI\DXGIAdapter.h" />
     <ClInclude Include="source\Renderer\DX12API\DXGI\DXGIFactory.h" />
     <ClInclude Include="source\EngineDebug.h" />
     <ClInclude Include="source\Renderer\Renderer.h" />
@@ -89,14 +91,17 @@
     <ClInclude Include="source\EngineCore.h" />
     <ClInclude Include="source\pch\pch.h" />
     <ClInclude Include="source\Renderer\DX12API\DebugAPI\X12Debug.h" />
+    <ClInclude Include="source\Renderer\DX12API\Output\X12Device.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Renderer\DX12API\DebugAPI\DXGIDebug.cpp" />
+    <ClCompile Include="source\Renderer\DX12API\DXGI\DXGIAdapter.cpp" />
     <ClCompile Include="source\Renderer\DX12API\DXGI\DXGIFactory.cpp" />
     <ClCompile Include="source\Renderer\Renderer.cpp" />
     <ClCompile Include="source\Application.cpp" />
     <ClCompile Include="source\pch\pch.cpp" />
     <ClCompile Include="source\Renderer\DX12API\DebugAPI\X12Debug.cpp" />
+    <ClCompile Include="source\Renderer\DX12API\Output\X12Device.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

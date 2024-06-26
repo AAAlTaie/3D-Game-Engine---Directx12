@@ -1,6 +1,6 @@
 #pragma once
 #include "pch/pch.h"
-
+#include "DXGIAdapter.h"
 
 
 namespace ENGINE 
@@ -10,7 +10,7 @@ namespace ENGINE
 	{
 	public:
 		DXGIFactory();
-
+		DXGIAdapter GetAdapter();
 
 
 	};
