@@ -132,7 +132,7 @@ namespace ENGINE
 	void Application::OnCreate(HWND hWnd)
 	{
 		std::cout << "Window created, Initializing Renderer: " << std::endl;
-		m_Renderer.InitializRenderer();
+		m_Renderer.InitializRenderer(hWnd);
 
 
 

@@ -9,11 +9,11 @@ namespace ENGINE
 	{
 	public:
 
-		DXGIAdapter() noexcept;
+		DXGIAdapter() noexcept {};
 
 		DXGIAdapter(IDXGIAdapter* pAdapter)  noexcept;
 
-		void FindMonitor();
+		//void FindMonitor();
 
 
 

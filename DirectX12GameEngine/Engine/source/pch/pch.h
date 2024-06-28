@@ -22,7 +22,9 @@
 #pragma comment(lib, "D3D12.lib")
 #pragma comment(lib, "dxguid.lib")
 
-#include "../EngineCore.h"
+#include "EngineCore.h"
+#include "EngineDebug.h"
+#include "GlobalSettings.h"
 
 
 

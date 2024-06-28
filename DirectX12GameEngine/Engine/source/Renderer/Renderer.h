@@ -3,7 +3,7 @@
 
 namespace ENGINE
 {
-
+	
 	class ENGINE_API Renderer
 	{
 
@@ -13,12 +13,13 @@ namespace ENGINE
 	public:
 		Renderer() = default;
 		~Renderer();
-		bool InitializRenderer();
+		bool InitializRenderer(const HWND hWnd); 
 
+		
 
 	private:
-
-
+		
+		
 
 
 

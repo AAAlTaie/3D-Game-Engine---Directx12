@@ -11,10 +11,10 @@ namespace ENGINE
 
 	}
 
-	void DXGIAdapter::FindMonitor()
+	/*void DXGIAdapter::FindMonitor()
 	{
 
-	}
+	}*/
 	
 
 
