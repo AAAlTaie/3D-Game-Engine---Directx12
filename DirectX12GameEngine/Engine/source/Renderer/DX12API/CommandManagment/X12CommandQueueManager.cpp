@@ -11,23 +11,23 @@ namespace ENGINE
 	{
 
 		//ComPtr : CommandQueue
-		D3D12_COMMAND_QUEUE_DESC cmdQds; 
+		D3D12_COMMAND_QUEUE_DESC cmdQds {};
 		cmdQds.Type = D3D12_COMMAND_LIST_TYPE_DIRECT;
 		cmdQds.Priority = D3D12_COMMAND_QUEUE_PRIORITY_HIGH;
 		cmdQds.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
 		cmdQds.NodeMask = 0; 
 
-		ID3D12CommandQueue* commandQ;
-		pDevice->CreateCommandQueue(
+		ID3D12CommandQueue* commandQ = nullptr;
+		WTF(pDevice->CreateCommandQueue(
 			&cmdQds, 
-			IID_PPV_ARGS(mCommandQueue.GetAddressOf()));
+			IID_PPV_ARGS(mCommandQueue.GetAddressOf())));
 
 		//ComPtr : Fence
-		pDevice->CreateFence(
+		WTF(pDevice->CreateFence(
 			mCurrentFenceValue, 
 			D3D12_FENCE_FLAG_NONE, 
-			IID_PPV_ARGS(mFence.GetAddressOf()));
+			IID_PPV_ARGS(mFence.GetAddressOf())));
 
 	}
-	X12CommandQueueManager& X12CommandQueueManager::GetCommand() { return mInstance; }
+	X12CommandQueueManager& X12CommandQueueManager::GetCommandInstance() { return mInstance; }
 }

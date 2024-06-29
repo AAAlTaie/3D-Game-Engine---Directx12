@@ -54,6 +54,9 @@
     <ClInclude Include="source\Renderer\DX12API\CommandManagment\X12CommandQueueManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\Renderer\DX12API\CommandManagment\X12CommandListManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\pch\pch.cpp">
@@ -84,6 +87,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Renderer\DX12API\CommandManagment\X12CommandQueueManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Renderer\DX12API\CommandManagment\X12CommandListManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

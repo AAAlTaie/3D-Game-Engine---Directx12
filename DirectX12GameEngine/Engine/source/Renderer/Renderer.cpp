@@ -7,6 +7,7 @@
 #include "DX12API/Output/X12Device.h"
 #include "DX12API/DXGI/DXGISwapChain.h"
 #include "DX12API/CommandManagment/X12CommandQueueManager.h"
+#include "DX12API//CommandManagment/X12CommandListManager.h"
 
 namespace ENGINE 
 {
@@ -28,11 +29,14 @@ namespace ENGINE
 		X12Device device = (adapter.Get());
 	
 		//CommandQueueManager
-		X12CommandQueueManager::GetCommand().InitializeCommaands(device.Get());
+		X12CommandQueueManager::GetCommandInstance().InitializeCommaands(device.Get());
+
+		//CommandListManager   //CommandListInstance
+		X12CommandListManager::GetCLIncstace().InitInitializCommaandList(device.Get());
 
 		//Swapchain
 		DXGISwapChain swapChain(
-			X12CommandQueueManager::GetCommand().GetQueue(),
+			X12CommandQueueManager::GetCommandInstance().GetQueue(),
 			device.Get(), 
 			factory.Get(), 
 			hWnd, 
