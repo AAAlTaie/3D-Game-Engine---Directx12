@@ -1,0 +1,11 @@
+
+Setup Global Settings Report Macros 
+ 
+ - GlobalSettings
+
+Current Tasks :
+
+- Factory    : Done
+- Adapter    : Done
+- Devicev    : Done
+- SwapChains : Done
