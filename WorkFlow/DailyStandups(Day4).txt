@@ -1,0 +1,17 @@
+Current Tasks :
+
+- Setting up Resource Transition
+- CommandAllocator
+- Fence(ing)
+
+Strcture Plaanning:
+
+- CommandQueue Manager
+- CommandList Manager
+- Resource_State_Manager
+- Shared CommandQueue
+
+BONUS Tasks: Threads get one commandList and one allocator
+- Depth stencils
+- Shared CommandQueue
+- ViewPort

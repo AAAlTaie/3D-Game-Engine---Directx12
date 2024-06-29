@@ -6,18 +6,12 @@
 #include "DX12API/DXGI/DXGIAdapter.h"
 #include "DX12API/Output/X12Device.h"
 #include "DX12API/DXGI/DXGISwapChain.h"
-
-
-
+#include "DX12API/CommandManagment/X12CommandQueueManager.h"
 
 namespace ENGINE 
 {
 
-	Renderer::~Renderer()
-	{
-
-
-	}
+	Renderer::~Renderer() {}
 
 	bool Renderer::InitializRenderer(const HWND hWnd)
 	{
@@ -32,30 +26,24 @@ namespace ENGINE
 
 		//Device
 		X12Device device = (adapter.Get());
-		
+	
+		//CommandQueueManager
+		X12CommandQueueManager::GetCommand().InitializeCommaands(device.Get());
 
-		
-		
-
-		D3D12_COMMAND_QUEUE_DESC cmdQds; 
-		cmdQds.Type = D3D12_COMMAND_LIST_TYPE_DIRECT;
-		cmdQds.Priority = D3D12_COMMAND_QUEUE_PRIORITY_HIGH;
-		cmdQds.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
-		cmdQds.NodeMask = 0;
-
-		ID3D12CommandQueue* commandQ;
-		device->CreateCommandQueue(&cmdQds, IID_PPV_ARGS(&commandQ));
-
-		//// Swapchain
-		DXGISwapChain swapChain(commandQ,device.Get(), factory.Get(), hWnd, DXGI_FORMAT_R16G16B16A16_FLOAT, 3);
+		//Swapchain
+		DXGISwapChain swapChain(
+			X12CommandQueueManager::GetCommand().GetQueue(),
+			device.Get(), 
+			factory.Get(), 
+			hWnd, 
+			DXGI_FORMAT_R16G16B16A16_FLOAT, 
+			GNORF);
 
 		//swapChain.Present();
 
 		DXGIDebug::GetInstance().GetLiveObjects();
 		return false;
 	}
-
-
 
 
 }

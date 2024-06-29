@@ -95,6 +95,7 @@
     <ClInclude Include="source\pch\pch.h" />
     <ClInclude Include="source\Renderer\DX12API\DebugAPI\X12Debug.h" />
     <ClInclude Include="source\Renderer\DX12API\Output\X12Device.h" />
+    <ClInclude Include="source\Renderer\DX12API\CommandManagment\X12CommandQueueManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Renderer\DX12API\DXGI\DXGISwapChain.cpp" />
@@ -106,6 +107,7 @@
     <ClCompile Include="source\pch\pch.cpp" />
     <ClCompile Include="source\Renderer\DX12API\DebugAPI\X12Debug.cpp" />
     <ClCompile Include="source\Renderer\DX12API\Output\X12Device.cpp" />
+    <ClCompile Include="source\Renderer\DX12API\CommandManagment\X12CommandQueueManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
