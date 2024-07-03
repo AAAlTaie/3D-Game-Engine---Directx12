@@ -89,6 +89,7 @@
     <ClInclude Include="source\Renderer\DX12API\DXGI\DXGIAdapter.h" />
     <ClInclude Include="source\Renderer\DX12API\DXGI\DXGIFactory.h" />
     <ClInclude Include="source\EngineDebug.h" />
+    <ClInclude Include="source\Renderer\DX12API\Resources\X12ResStateManager.h" />
     <ClInclude Include="source\Renderer\Renderer.h" />
     <ClInclude Include="source\Application.h" />
     <ClInclude Include="source\EngineCore.h" />
@@ -103,6 +104,7 @@
     <ClCompile Include="source\Renderer\DX12API\DebugAPI\DXGIDebug.cpp" />
     <ClCompile Include="source\Renderer\DX12API\DXGI\DXGIAdapter.cpp" />
     <ClCompile Include="source\Renderer\DX12API\DXGI\DXGIFactory.cpp" />
+    <ClCompile Include="source\Renderer\DX12API\Resources\X12ResStateManager.cpp" />
     <ClCompile Include="source\Renderer\Renderer.cpp" />
     <ClCompile Include="source\Application.cpp" />
     <ClCompile Include="source\pch\pch.cpp" />

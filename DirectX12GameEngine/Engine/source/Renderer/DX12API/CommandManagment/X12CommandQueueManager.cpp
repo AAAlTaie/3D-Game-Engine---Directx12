@@ -29,5 +29,5 @@ namespace ENGINE
 			IID_PPV_ARGS(mFence.GetAddressOf())));
 
 	}
-	X12CommandQueueManager& X12CommandQueueManager::GetCommandInstance() { return mInstance; }
+	X12CommandQueueManager& X12CommandQueueManager::GetCommandQueueInstance() { return mInstance; }
 }

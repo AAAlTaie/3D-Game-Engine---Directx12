@@ -19,7 +19,12 @@ namespace ENGINE
 			IID_PPV_ARGS(mCommandList.GetAddressOf())));
 	}
 
-	X12CommandListManager& X12CommandListManager::GetCLIncstace() { return mInstance; }
+	X12CommandListManager& X12CommandListManager::GetCommandListIncstace() { return mInstance; }
+
+	ID3D12GraphicsCommandList* X12CommandListManager::GetGraphicsCommandList()
+	{
+		return (ID3D12GraphicsCommandList*)mInstance.mCommandList.Get();
+	}
 
 
 

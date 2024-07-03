@@ -81,18 +81,17 @@ namespace ENGINE
 		if (!ptr_)
 		{
 			THROWUP_AN_ERROR("Trying to create buffers on an empty SwapChain!");
-			for (UINT i = 0; i < mBufferCount; ++i)
-			{
-				mBufferArray[i].Reset();
-				WTF(Get()->GetBuffer(i, IID_PPV_ARGS(mBufferArray[i].GetAddressOf())));
+		}
 
-				//CPUHandles
-				D3D12_CPU_DESCRIPTOR_HANDLE cpuHandle = mRtvHeap->GetCPUDescriptorHandleForHeapStart();
-				cpuHandle.ptr += (size_t)mHeapIncrement * i;
-				mDevice->CreateRenderTargetView(mBufferArray[i].Get(), NULL, cpuHandle);
+		for (UINT i = 0; i < mBufferCount; ++i)
+		{
+			mBufferArray[i].Reset();
+			WTF(Get()->GetBuffer(i, IID_PPV_ARGS(mBufferArray[i].GetAddressOf())));
 
-			}
-
+			//CPUHandles
+			D3D12_CPU_DESCRIPTOR_HANDLE cpuHandle = mRtvHeap->GetCPUDescriptorHandleForHeapStart();
+			cpuHandle.ptr += (size_t)mHeapIncrement * i;
+			mDevice->CreateRenderTargetView(mBufferArray[i].Get(), NULL, cpuHandle);
 
 		}
 	}
@@ -103,17 +102,7 @@ namespace ENGINE
 		for (UINT i = 0; i < mBufferCount; ++i)
 		{
 			mBufferArray[i].Reset();
-
 		}
-
-
-
-	}
-
-	void DXGISwapChain::Present() //// buffer
-	{
-		ptr_->Present(NULL, NULL);
-		mCurrentBuffer = (mCurrentBuffer + 1) % mBufferCount; ///increas for more buffers
 	}
 
 	void DXGISwapChain::Release()
@@ -122,6 +111,21 @@ namespace ENGINE
 		mRtvHeap.Reset();
 		Reset();
 	}
+
+	D3D12_CPU_DESCRIPTOR_HANDLE DXGISwapChain::GetCurrentRTVHandle()
+	{
+	    D3D12_CPU_DESCRIPTOR_HANDLE cpuHandle = mRtvHeap->GetCPUDescriptorHandleForHeapStart();
+		cpuHandle.ptr += (size_t)mHeapIncrement * mCurrentBuffer;
+		return cpuHandle;
+	}
+
+	void DXGISwapChain::Present() //// buffer
+	{
+		ptr_->Present(NULL, NULL);
+		mCurrentBuffer = (mCurrentBuffer + 1) % mBufferCount; ///increas for more buffers
+	}
+
+	
 
 
 }

@@ -22,6 +22,10 @@ namespace ENGINE
 
         void CreateBuffers();
         void DropBuffers();
+
+        inline ID3D12Resource* GetCurrentBuffer() { return mBufferArray[mCurrentBuffer].Get(); };
+        D3D12_CPU_DESCRIPTOR_HANDLE GetCurrentRTVHandle();
+
         void Present();
         void Release();
 

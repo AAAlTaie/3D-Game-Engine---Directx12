@@ -10,10 +10,7 @@ namespace ENGINE
 	public:
 
 		void InitInitializCommaandList(ID3D12Device* pDevice);
-
-
-
-
+		//inline ID3D12GraphicsCommandList* GetGraphicsCommandList() { return (ID3D12GraphicsCommandList*)mCommandList.Get(); };
 
 	private:
 
@@ -21,8 +18,8 @@ namespace ENGINE
 
 	public:
 
-		static X12CommandListManager& GetCLIncstace();
-
+		static X12CommandListManager& GetCommandListIncstace();
+		static ID3D12GraphicsCommandList* GetGraphicsCommandList();
 	private:
 
 		static X12CommandListManager mInstance;

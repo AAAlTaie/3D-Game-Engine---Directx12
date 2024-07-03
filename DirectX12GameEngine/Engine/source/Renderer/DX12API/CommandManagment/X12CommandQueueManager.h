@@ -14,13 +14,13 @@ namespace ENGINE
 		void InitializeCommaands(ID3D12Device* pDevice);
 
 		inline ID3D12CommandQueue* GetQueue() { return mCommandQueue.Get(); };
-		inline UINT GetCurrentFence() { return mCurrentFenceValue; };
+		inline UINT GetCurrentFence() const { return mCurrentFenceValue; };
 
 	private:
 		X12CommandQueueManager() = default;
 
 	public:
-		static X12CommandQueueManager& GetCommandInstance();
+		static X12CommandQueueManager& GetCommandQueueInstance();
 		
 
 	private:
