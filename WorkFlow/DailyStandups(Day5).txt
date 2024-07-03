@@ -1,0 +1,21 @@
+Current Tasks :
+
+- Shared CommandQueue :-----------------DONE!
+- Depth stencils      :-----------------ERROR!
+- ViewPort            :-----------------ERROR!
+
+Strcture Plaanning:
+
+- MultiThreading Manager   :-------------ERROR!
+- Pipeline Manager         :-------------ERROR!
+
+BONUS Tasks: 
+
+- Shaders            :-------------!     
+- Root               :-------------!
+- Description        :-------------!    
+
+Next Tasks: Resources/Buffers/--> DrawCalls
+
+   
+
