@@ -1,17 +1,5 @@
 #include "DXGISwapChain.h"
 
-/*
-    enum DXGI_SWAP_EFFECT
-    {
-        DXGI_SWAP_EFFECT_DISCARD	= 0,
-        DXGI_SWAP_EFFECT_SEQUENTIAL	= 1,
-        DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL	= 3,
-        DXGI_SWAP_EFFECT_FLIP_DISCARD	= 4
-    } 	DXGI_SWAP_EFFECT;
-	
-*/
-
-
 namespace ENGINE 
 {
 	DXGISwapChain::DXGISwapChain(
@@ -23,8 +11,31 @@ namespace ENGINE
 		const UINT bufferCount
 	)
 	{
+		InitializeSwapChain(pCommandQueue,
+			pDevice,
+			pFactory,
+			hWnd,
+			format,
+			bufferCount);
+	}
 
-	
+	DXGISwapChain::~DXGISwapChain()
+	{
+		Release();
+		mDevice->Release();
+		ptr_->Release();
+	}
+
+	void DXGISwapChain::InitializeSwapChain(
+		ID3D12CommandQueue* pCommandQueue, 
+		ID3D12Device* pDevice, 
+		IDXGIFactory2* pFactory, 
+		const HWND hWnd, 
+		const DXGI_FORMAT 
+		format, 
+		const UINT bufferCount)
+	{
+
 		D3D12_DESCRIPTOR_HEAP_DESC rtvHeapDescriptor = {};
 		rtvHeapDescriptor.Type = D3D12_DESCRIPTOR_HEAP_TYPE_RTV;
 		rtvHeapDescriptor.NumDescriptors = bufferCount;
@@ -67,11 +78,7 @@ namespace ENGINE
 
 		mDevice = pDevice;
 		CreateBuffers();
-	}
 
-	DXGISwapChain::~DXGISwapChain()
-	{
-		Release();
 
 	}
 
@@ -101,6 +108,7 @@ namespace ENGINE
 
 		for (UINT i = 0; i < mBufferCount; ++i)
 		{
+			mBufferArray[i]->Release();
 			mBufferArray[i].Reset();
 		}
 	}
@@ -109,6 +117,7 @@ namespace ENGINE
 	{
 		DropBuffers();
 		mRtvHeap.Reset();
+		ptr_->Release();
 		Reset();
 	}
 

@@ -8,18 +8,18 @@ namespace ENGINE
 	{
 	
 	public:
-
 		void InitInitializCommaandList(ID3D12Device* pDevice);
-		//inline ID3D12GraphicsCommandList* GetGraphicsCommandList() { return (ID3D12GraphicsCommandList*)mCommandList.Get(); };
-
+		void ReleaseCL();
 	private:
-
 		X12CommandListManager() = default;
+		~X12CommandListManager();
 
 	public:
-
 		static X12CommandListManager& GetCommandListIncstace();
-		static ID3D12GraphicsCommandList* GetGraphicsCommandList();
+		static inline ID3D12CommandList* GetCommandList() { return mInstance.mCommandList.Get(); }
+		static inline ID3D12GraphicsCommandList* GetGraphicsCommandList() { return (ID3D12GraphicsCommandList*)mInstance.mCommandList.Get(); }
+
+		static void ResetCommandList();
 	private:
 
 		static X12CommandListManager mInstance;

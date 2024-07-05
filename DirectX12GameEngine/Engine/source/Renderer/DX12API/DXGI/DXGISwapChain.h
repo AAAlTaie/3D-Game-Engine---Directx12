@@ -11,8 +11,7 @@ namespace ENGINE
 
 
         DXGISwapChain() = default;
-        DXGISwapChain(
-                  ID3D12CommandQueue* pCommandQueue, 
+        DXGISwapChain(ID3D12CommandQueue* pCommandQueue, 
                   ID3D12Device* pDevice, 
                   IDXGIFactory2* pFactory, 
             const HWND hWnd, 
@@ -20,18 +19,29 @@ namespace ENGINE
             const UINT bufferCount = GNORF);
         ~DXGISwapChain();
 
+        void InitializeSwapChain(ID3D12CommandQueue* pCommandQueue,
+            ID3D12Device* pDevice,
+            IDXGIFactory2* pFactory,
+            const HWND hWnd,
+            const DXGI_FORMAT format,
+            const UINT bufferCount = GNORF
+        );
+
         void CreateBuffers();
         void DropBuffers();
 
-        inline ID3D12Resource* GetCurrentBuffer() { return mBufferArray[mCurrentBuffer].Get(); };
+        ID3D12Resource* GetCurrentBuffer() { return mBufferArray[mCurrentBuffer].Get(); };
         D3D12_CPU_DESCRIPTOR_HANDLE GetCurrentRTVHandle();
+
+        inline UINT FramesInFlight() const { return  mBufferCount; };
 
         void Present();
         void Release();
 
     private:
 
-        ID3D12Device* mDevice;
+        //ID3D12Device* mDevice = nullptr; try ID3D12Device* mDevice = 
+        ID3D12Device* mDevice = nullptr;
 
         Microsoft::WRL::ComPtr<ID3D12Resource> mBufferArray[GNORF] = {}; //te be finished later
         Microsoft::WRL::ComPtr<ID3D12DescriptorHeap> mRtvHeap;   //render target heap

@@ -1,0 +1,22 @@
+Current Tasks :
+
+- LinkAllCommandListsExes :-----------------DONE!
+
+
+Strcture Plaanning:
+
+- Depth stencils           :-----------------
+- ViewPort                 :-----------------
+- MultiThreading Manager   :-------------
+- Pipeline Manager         :-------------
+
+BONUS Tasks: 
+
+- Shaders            :-------------!     
+- Root               :-------------!
+- Description        :-------------!    
+
+Next Tasks: Resources/Buffers/--> DrawCalls
+
+   
+

@@ -12,7 +12,7 @@ namespace ENGINE
 		const UINT subResource
 	)
 	{
-		D3D12_RESOURCE_BARRIER barrier; //{}
+		D3D12_RESOURCE_BARRIER barrier {}; //{}
 		barrier.Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
 		barrier.Flags = D3D12_RESOURCE_BARRIER_FLAG_NONE;
 		barrier.Transition.pResource = pResource;
@@ -21,6 +21,11 @@ namespace ENGINE
 		barrier.Transition.StateAfter = stateAfter;
 
 		pGraphicsCommand->ResourceBarrier(1, &barrier);
+	}
+
+	X12ResStateManager::~X12ResStateManager()
+	{
+	    
 	}
 
 	X12ResStateManager& X12ResStateManager::GetResourceInstance()

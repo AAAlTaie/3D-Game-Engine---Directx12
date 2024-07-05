@@ -1,4 +1,3 @@
-#include "pch/pch.h"
 #include "Application.h"
 
 #ifndef GET_X_LPARAM
@@ -36,6 +35,7 @@ namespace ENGINE
 
 	Application::~Application()
 	{
+		
 	}
 
 	bool Application::Initialized()
@@ -132,7 +132,7 @@ namespace ENGINE
 	void Application::OnCreate(HWND hWnd)
 	{
 		std::cout << "Window created, Initializing Renderer: " << std::endl;
-		m_Renderer.InitializRenderer(hWnd);
+		m_Renderer.InitializeRenderer(hWnd);
 
 
 

@@ -1,3 +1,3 @@
 #pragma once
 
-#define GNORF 3
+#define GNORF 2

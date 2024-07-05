@@ -29,5 +29,30 @@ namespace ENGINE
 			IID_PPV_ARGS(mFence.GetAddressOf())));
 
 	}
+	void X12CommandQueueManager::ReleaseCQ()
+	{
+		while (mFence->GetCompletedValue() < mCurrentFenceValue)
+		{
+			PRINT_N("WAITING ON GPU!");
+			_mm_pause();
+		}
+		mCommandQueue.Reset();
+		mFence.Reset();
+
+	}
+
+	X12CommandQueueManager::~X12CommandQueueManager()
+	{
+		ReleaseCQ();
+	}
+
 	X12CommandQueueManager& X12CommandQueueManager::GetCommandQueueInstance() { return mInstance; }
+
+	void X12CommandQueueManager::ExecuteCommandList(ID3D12CommandList* pCommandlist)
+	{
+		mInstance.mCommandQueue.Get()->ExecuteCommandLists(1, (ID3D12CommandList* const*)&pCommandlist);
+		++mInstance.mCurrentFenceValue;
+		mInstance.mCommandQueue.Get()->Signal(mInstance.mFence.Get(), mInstance.mCurrentFenceValue);
+	}
+	
 }
