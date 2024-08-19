@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Engine.h"
 #include "Renderer.h"
+#include "Scene.h"
 
 namespace ENGINE 
 {
@@ -100,8 +101,17 @@ namespace ENGINE
 		return DefWindowProcA(hwnd, msg, wp, lp);
 	}
 
-	int Engine::ExcuteEngine(void* scene) const
+	Renderer* Engine::get_renderer()
 	{
+		return m_renderer;
+	}
+
+	int Engine::ExcuteScene(Scene* scene) const
+	{
+		if (scene)
+		{
+			scene->initialize_frame();
+		}
 		MSG msg{};
 		while (msg.message != WM_QUIT)
 		{
@@ -115,12 +125,16 @@ namespace ENGINE
 				DispatchMessage(&msg);
 				
 			}
-			//TODO : update and render
+			//TODO : Input Manager and Timer
 			if (m_renderer) { 
 			
 				//TIMER SETUP (Reaper)
 				m_renderer->begin_frame();
-
+				if (scene)
+				{
+					scene->update_frame(0.0f); //pre_render
+					scene->render_frame();     //post_render
+				}
 				//TODO : Scene UPDATING
 				m_renderer->end_frame();
 			}
@@ -130,6 +144,7 @@ namespace ENGINE
 
 		}
 		//TODO : Renderer uniniatilize
+		if (scene) scene->release();
 		m_renderer->reset();
 		
 		
@@ -146,7 +161,6 @@ namespace ENGINE
 
 		return (int)msg.lParam; 
 	}
-
 
 	LRESULT Engine::LocalProcWnd(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 	{

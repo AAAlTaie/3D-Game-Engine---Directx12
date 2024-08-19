@@ -44,31 +44,40 @@ namespace ENGINE
 		safe_release(serializedRootSignature);
 		safe_release(errorBlob);
 
-		//DX12Context::compile_from_file("VertexShader.hlsl", "vs_main", "vs_6_0", &m_vertexShaderBlob);
-		//DX12Context::compile_from_file("PixelShader.hlsl", "ps_main", "ps_6_0", &m_pixelShaderBlob);
+		DX12Context::compile_from_file("shaders/VertexShader.hlsl", "vs_main", "vs_5_0", &m_vertexShaderBlob);
+		DX12Context::compile_from_file("shaders/PixelShader.hlsl", "ps_main", "ps_5_0", &m_pixelShaderBlob);
 
+		D3D12_INPUT_ELEMENT_DESC m_inputLayout[] = {
+
+			{ "POSITION", 0, DXGI_FORMAT_R32G32B32A32_FLOAT,0,0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0},
+			{ "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0,12,  D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0}
+
+		};
 		//2.piplineState
 		D3D12_GRAPHICS_PIPELINE_STATE_DESC pso_desc{};
-		/*pso_desc.InputLayout = { m_inputLayout.data(), static_cast<UINT>(m_inputLayout.size()) };
 		pso_desc.pRootSignature = m_rootSignature;
 		pso_desc.VS = { m_vertexShaderBlob->GetBufferPointer(), m_vertexShaderBlob->GetBufferSize() };
 		pso_desc.PS = { m_pixelShaderBlob->GetBufferPointer(), m_pixelShaderBlob->GetBufferSize() };
-		pso_desc.RasterizerState = CD3DX12_RASTERIZER_DESC(D3D12_DEFAULT);
 		pso_desc.BlendState = CD3DX12_BLEND_DESC(D3D12_DEFAULT);
-		pso_desc.DepthStencilState = CD3DX12_DEPTH_STENCIL_DESC(D3D12_DEFAULT);
 		pso_desc.SampleMask = UINT_MAX;
+		pso_desc.RasterizerState = CD3DX12_RASTERIZER_DESC(D3D12_DEFAULT);
+		pso_desc.DepthStencilState = CD3DX12_DEPTH_STENCIL_DESC(D3D12_DEFAULT);
+		pso_desc.InputLayout = { m_inputLayout, _countof(m_inputLayout)};
 		pso_desc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
 		pso_desc.NumRenderTargets = 1;
 		pso_desc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;
-		pso_desc.DSVFormat = DXGI_FORMAT_D24_UNORM_S8_UINT;
-		pso_desc.SampleDesc.Count = 1;*/
+		pso_desc.DSVFormat = DXGI_FORMAT_D32_FLOAT;
+		pso_desc.SampleDesc.Count = 1;
+		pso_desc.NodeMask = 0;
 
-		//HR(m_device->CreateGraphicsPipelineState(&pso_desc, IID_PPV_ARGS(&m_pipelineState)));
 
+		HR(m_device->CreateGraphicsPipelineState(&pso_desc, IID_PPV_ARGS(&m_pipeline)));
 
 		//3.VertexBuffer
 		
 		//4.IndexBuffer
+
+
 	}
 
 

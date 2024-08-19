@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Engine.h"
 #include "RealTimeDebug.h"
-
+#include "Scenes/UnitTestScene.h"
 
 int main() 
 {
@@ -11,10 +11,9 @@ int main()
      #endif // _DEBUG
 
 	ENGINE::Engine app(1240, 860);
+	ENGINE::UnitTestScene scene0(app.get_renderer());
 
-	////EngineCreate
-	////TODO : 
 
-	auto shutdown = app.ExcuteEngine(nullptr);
+	auto shutdown = app.ExcuteScene(&scene0);
 	return shutdown;
 }

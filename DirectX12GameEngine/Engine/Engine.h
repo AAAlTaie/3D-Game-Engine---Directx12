@@ -9,19 +9,21 @@
 namespace ENGINE 
 {
     class Renderer;
+    class Scene;
 	class ENGINE_API Engine
 	{
     public:
          Engine(uint cx, uint cy);
         ~Engine();
 
-        int ExcuteEngine(void* scene) const;
+        int ExcuteScene(Scene* scene) const;
         LRESULT LocalProcWnd(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp);
         static LRESULT CALLBACK GlobalWindProc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp);
 
 
         HWND             m_main_hwnd{};
-        Renderer*     m_renderer{};
+        Renderer*        get_renderer();
+        Renderer*        m_renderer{};
         
 
     private:

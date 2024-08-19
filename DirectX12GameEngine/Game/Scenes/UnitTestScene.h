@@ -21,7 +21,7 @@ namespace ENGINE
 		ID3D10Blob* m_vertexShaderBlob{};
 		ID3D10Blob* m_pixelShaderBlob{};
 
-		std::vector<D3D12_INPUT_ELEMENT_DESC> m_inputLayout;
+		
 
 
 		//void ComplileShaders();

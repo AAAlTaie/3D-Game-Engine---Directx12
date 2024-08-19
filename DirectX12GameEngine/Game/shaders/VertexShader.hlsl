@@ -7,7 +7,7 @@ struct vs_in
 
 struct vs_out
 {
-	float4 pos : SV_POSITION;
+    float4 pos : SV_Position;
 	float4 color : COLOR;
 };
 
