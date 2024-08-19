@@ -15,87 +15,54 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\pch\pch.h">
+    <ClInclude Include="Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\EngineCore.h">
+    <ClInclude Include="EngineCore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Application.h">
+    <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Renderer\Renderer.h">
+    <ClInclude Include="RealTimeDebug.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\EngineDebug.h">
+    <ClInclude Include="3DMath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Renderer\DX12API\DXGI\DXGIFactory.h">
+    <ClInclude Include="SceneManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Renderer\DX12API\DebugAPI\X12Debug.h">
+    <ClInclude Include="Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Renderer\DX12API\DebugAPI\DXGIDebug.h">
+    <ClInclude Include="Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Renderer\DX12API\DXGI\DXGIAdapter.h">
+    <ClInclude Include="Graphics\DX12Sampler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Renderer\DX12API\Output\X12Device.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Renderer\DX12API\DXGI\DXGISwapChain.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GlobalSettings.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Renderer\DX12API\CommandManagment\X12CommandQueueManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Renderer\DX12API\CommandManagment\X12CommandListManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Renderer\DX12API\Resources\X12ResStateManager.h">
+    <ClInclude Include="Graphics\DX12Context.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\pch\pch.cpp">
+    <ClCompile Include="Engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Application.cpp">
+    <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Renderer\Renderer.cpp">
+    <ClCompile Include="Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Renderer\DX12API\DXGI\DXGIFactory.cpp">
+    <ClCompile Include="Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Renderer\DX12API\DebugAPI\X12Debug.cpp">
+    <ClCompile Include="Graphics\DX12Sampler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Renderer\DX12API\DebugAPI\DXGIDebug.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Renderer\DX12API\DXGI\DXGIAdapter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Renderer\DX12API\Output\X12Device.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Renderer\DX12API\DXGI\DXGISwapChain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Renderer\DX12API\CommandManagment\X12CommandQueueManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Renderer\DX12API\CommandManagment\X12CommandListManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Renderer\DX12API\Resources\X12ResStateManager.cpp">
+    <ClCompile Include="Graphics\DX12Context.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
