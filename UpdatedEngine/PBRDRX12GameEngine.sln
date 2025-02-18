@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "Game\Game.vcxproj", "{A0161FEE-B501-4B86-B4BB-A3D939E83D0A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DDF76483-250A-4892-AFB8-025A5721F6B9} = {DDF76483-250A-4892-AFB8-025A5721F6B9}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "Engine\Engine.vcxproj", "{DDF76483-250A-4892-AFB8-025A5721F6B9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0161FEE-B501-4B86-B4BB-A3D939E83D0A}.Debug|x64.ActiveCfg = Debug|x64
+		{A0161FEE-B501-4B86-B4BB-A3D939E83D0A}.Debug|x64.Build.0 = Debug|x64
+		{A0161FEE-B501-4B86-B4BB-A3D939E83D0A}.Release|x64.ActiveCfg = Release|x64
+		{A0161FEE-B501-4B86-B4BB-A3D939E83D0A}.Release|x64.Build.0 = Release|x64
+		{DDF76483-250A-4892-AFB8-025A5721F6B9}.Debug|x64.ActiveCfg = Debug|x64
+		{DDF76483-250A-4892-AFB8-025A5721F6B9}.Debug|x64.Build.0 = Debug|x64
+		{DDF76483-250A-4892-AFB8-025A5721F6B9}.Release|x64.ActiveCfg = Release|x64
+		{DDF76483-250A-4892-AFB8-025A5721F6B9}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CF644707-E24D-4EB7-9A80-48FE92EF8983}
+	EndGlobalSection
+EndGlobal
