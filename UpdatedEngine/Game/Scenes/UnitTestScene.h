@@ -30,6 +30,7 @@ namespace ENGINE
 		ID3D12RootSignature* m_rootSignature{};
 		ID3D12PipelineState* m_pipeline{};
 
+		//ID3D12PipelineState* m_line_pipline{};
 		ID3D12PipelineState* m_model_pipeline{};
 
 		//LINE Vertex
@@ -73,6 +74,7 @@ namespace ENGINE
 		void create_3D_sphere(float radius, int sectorCount, int stackCount);
 
 		Model* obj_model;
+		Model* grid_model;
 
 	};
 }

@@ -63,8 +63,8 @@ namespace ENGINE
 			cmdlist->DrawIndexedInstanced(
 				node.indices,		//indexcount per instance
 				1,		//instance count
-				cur_pos,		//start index location
-				0,			//base vertex location
+				node.indices_offset,		//start index location
+				node.base_vertex,			//base vertex location
 				0		//start instance location
 				
 			);
@@ -108,86 +108,181 @@ namespace ENGINE
 		//return nullptr;
 	}
 
+	Model* ModelCache::create_model(std::vector<Vertex>& v, std::vector<uint>& i)
+	{
+		std::shared_ptr<Model> model = std::make_shared<Model>();
+		model->create_buffer(v, i);
+		m_model_list.emplace_back(model);
+		return model.get();
+	}
+
+	//void import_assimp_model(const char* filename, Model* pp_model)
+	//{
+	//	Assimp::Importer importer;
+
+
+	//	const aiScene* scene = importer.ReadFile(
+	//		filename, 
+	//		aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
+
+	//	if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
+	//	{
+	//	
+	//		return;
+	//	}
+
+	//	uint model_nums = scene->mNumMeshes;
+
+	//	Model* model = pp_model;
+	//	//resize sub model
+	//	model->m_sub_nodes.resize(model_nums);
+
+	//	std::vector<Vertex> vertices;
+	//	std::vector<uint> indices;
+
+	//	//float3 min(FTL_MAX)
+	//	for (uint32_t index = 0; index < model_nums; ++index)
+	//	{
+	//		aiMesh* mesh = scene->mMeshes[index];
+
+	//		// Process vertices
+	//		for (uint32_t i = 0; i < mesh->mNumVertices; ++i)
+	//		{
+	//			Vertex vertex{};
+
+	//			memcpy(&vertex.pos, &mesh->mVertices[i], sizeof(float3));
+	//			memcpy(&vertex.normal, &mesh->mNormals[i], sizeof(float3));
+
+	//			//st
+	//			if (mesh->mTextureCoords[0]) {
+	//				memcpy(&vertex.st, &mesh->mTextureCoords[0][i], sizeof(float) * 2);
+	//			}
+	//			else {
+	//				vertex.st = float2(0.f, 0.f);
+	//			}
+
+	//			memcpy(&vertex.binormal, &mesh->mBitangents[i], sizeof(float3));
+	//			memcpy(&vertex.tangent, &mesh->mTangents[i], sizeof(float3));
+
+	//			vertices.emplace_back(vertex);
+	//			
+	//		}
+
+	//		SubModel* node = model->m_sub_nodes.data();
+
+	//		node[index].base_vertex += mesh->mNumVertices;
+	//		node[index].indices_offset +=
+	//			(index > 0) ? node[index - 1].indices : 0;
+	//		node[index].indices = mesh->mNumFaces * 3;
+	//		// Process indices
+
+	//		printf("subnode %d indice %d offset %d\n", index, node[index].indices, node[index].indices_offset);
+
+	//		for (uint32_t i = 0; i < mesh->mNumFaces; ++i)
+	//		{
+	//			aiFace face = mesh->mFaces[i];
+	//			if (face.mNumIndices == 3)
+	//			{
+	//				//if shared vertex we need to pass it
+	//				indices.emplace_back(face.mIndices[0] + node[index].indices_offset);
+	//				indices.emplace_back(face.mIndices[1] + node[index].indices_offset);
+	//				indices.emplace_back(face.mIndices[2] + node[index].indices_offset);
+	//			}
+	//		}
+
+	//		// Process material, if needed
+	//		aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
+	//		// Example: Load material properties into p_model->m_models[i].material
+	//	}
+
+	//	model->create_buffer(vertices, indices);
+
+	//}
+
 	void import_assimp_model(const char* filename, Model* pp_model)
 	{
 		Assimp::Importer importer;
-
-
 		const aiScene* scene = importer.ReadFile(
-			filename, 
-			aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
+			filename,
+			aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_CalcTangentSpace | aiProcess_MakeLeftHanded);
 
 		if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 		{
-		
+			std::cerr << "ERROR::ASSIMP:: " << importer.GetErrorString() << std::endl;
 			return;
 		}
 
-		uint model_nums = scene->mNumMeshes;
-
+		uint numMeshes = scene->mNumMeshes;
 		Model* model = pp_model;
-		//resize sub model
-		model->m_sub_nodes.resize(model_nums);
+		// 서브 모델의 개수에 맞게 벡터 크기 조정
+		model->m_sub_nodes.resize(numMeshes);
 
 		std::vector<Vertex> vertices;
 		std::vector<uint> indices;
 
-		//float3 min(FTL_MAX)
-		for (uint32_t index = 0; index < model_nums; ++index)
-		{
-			aiMesh* mesh = scene->mMeshes[index];
+		// 각 메시의 정점 및 인덱스 오프셋 누적값
+		uint vertexOffset = 0;
+		uint indexOffset = 0;
 
-			// Process vertices
+		for (uint32_t meshIndex = 0; meshIndex < numMeshes; ++meshIndex)
+		{
+			const aiMesh* mesh = scene->mMeshes[meshIndex];
+
+			// 메시의 정점 처리
 			for (uint32_t i = 0; i < mesh->mNumVertices; ++i)
 			{
 				Vertex vertex{};
 
+				// 위치와 법선 복사
 				memcpy(&vertex.pos, &mesh->mVertices[i], sizeof(float3));
 				memcpy(&vertex.normal, &mesh->mNormals[i], sizeof(float3));
 
-				//st
-				if (mesh->mTextureCoords[0]) {
+				// 텍스처 좌표 복사 (없으면 0 할당)
+				if (mesh->mTextureCoords[0])
+				{
 					memcpy(&vertex.st, &mesh->mTextureCoords[0][i], sizeof(float) * 2);
 				}
-				else {
+				else
+				{
 					vertex.st = float2(0.f, 0.f);
 				}
 
-				memcpy(&vertex.binormal, &mesh->mBitangents[i], sizeof(float3));
+				// 탄젠트와 비탄젠트 복사
 				memcpy(&vertex.tangent, &mesh->mTangents[i], sizeof(float3));
+				memcpy(&vertex.binormal, &mesh->mBitangents[i], sizeof(float3));
 
 				vertices.emplace_back(vertex);
-				
 			}
 
-			SubModel* node = model->m_sub_nodes.data();
+			// 서브 모델 정보 설정 (정점 및 인덱스 오프셋)
+			SubModel& subModel = model->m_sub_nodes[meshIndex];
+			subModel.base_vertex = vertexOffset;
+			subModel.indices = mesh->mNumFaces * 3;
+			//subModel.indices = mesh->mNumFaces;
+			subModel.indices_offset = indexOffset;
 
-			node[index].base_vertex += mesh->mNumVertices;
-			node[index].indices_offset +=
-				(index > 0) ? node[index - 1].indices : 0;
-			node[index].indices = mesh->mNumFaces * 3;
-			// Process indices
-
-			printf("subnode %d indice %d offset %d\n", index, node[index].indices, node[index].indices_offset);
-
+			// 메시의 인덱스 처리 (정점 오프셋 적용)
 			for (uint32_t i = 0; i < mesh->mNumFaces; ++i)
 			{
-				aiFace face = mesh->mFaces[i];
+				const aiFace& face = mesh->mFaces[i];
 				if (face.mNumIndices == 3)
 				{
-					//if shared vertex we need to pass it
-					indices.emplace_back(face.mIndices[0] + node[index].indices_offset);
-					indices.emplace_back(face.mIndices[1] + node[index].indices_offset);
-					indices.emplace_back(face.mIndices[2] + node[index].indices_offset);
+					indices.emplace_back(face.mIndices[0] + vertexOffset);
+					indices.emplace_back(face.mIndices[1] + vertexOffset);
+					indices.emplace_back(face.mIndices[2] + vertexOffset);
 				}
 			}
 
-			// Process material, if needed
+			// 다음 메시를 위한 누적 오프셋 업데이트
+			vertexOffset += mesh->mNumVertices;
+			indexOffset += subModel.indices;
+
+			// 필요 시, 메시의 재질 처리
 			aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
-			// Example: Load material properties into p_model->m_models[i].material
+			// 예: material 정보를 subModel.material에 로드
 		}
 
 		model->create_buffer(vertices, indices);
-
 	}
+
 }
