@@ -108,6 +108,7 @@
     <ClInclude Include="EngineCore.h" />
     <ClInclude Include="Math\float4x4.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PipelineManager.h" />
     <ClInclude Include="RealTimeDebug.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
@@ -125,6 +126,7 @@
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="PipelineManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Core\Timer.cpp" />
